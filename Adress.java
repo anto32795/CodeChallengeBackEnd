@@ -4,9 +4,26 @@ import javax.persistence.*;
 
 @Entity
 public class Adress {
-	@Id
-	private Integer id;
-	public Integer getId() {
+    @Id
+    @Column(name = "ADRESS_ID")
+    private Integer id;
+    
+    @Column @Column(name = "STREET")
+    private String street;
+    
+    @Column(name = "STATE")
+    private String state; 
+    
+    @Column(name = "CITY")
+    private String city;
+    
+    @Column(name = "COUNTRY")
+    private String country;
+    
+    @Column(name = "ZIP")
+    private String zip;
+    
+    public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {

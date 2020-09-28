@@ -8,19 +8,22 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class User {
-	@Id
+    @Id
+    @Column(name = "ID_USER")
 	private Integer id;
 	
-	
+	@Column(name = "NAME")
 	private String name;
 	
-	
-	private String email;
-	
+	@Column(name = "EMAIL")
+    private String email;
+    
+	@Column(name = "BIRTHDAY")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime birthDate;
-	
-	@OneToOne
+    
+    @OneToOne
+    @JoinColumn(name = "ADRESS_ID")
 	private Adress adress;
 	
 	
@@ -57,15 +60,4 @@ public class User {
 	public void setBirthDate(LocalDateTime birthDate) {
 		this.birthDate = birthDate;
 	}
-	/* Fecha de nacimiento a partir de String 
-	public void setBirthDate(String dateString) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime dateTime = LocalDateTime.parse(dateString, formatter);
-        this.birthDate = dateTime;
-        
-	}*/
-	
-	
-	
 }
-
