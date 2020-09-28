@@ -3,10 +3,28 @@ package com.codechallenge2.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "direcciones")
 public class Adress {
-	@Id
-	private Integer id;
-	public Integer getId() {
+    @Id
+    @GeneratedValue(strategy = GeneratedType.IDENTITY)
+    private Integer id;
+    
+    @Column(name = "street")
+    private String street;
+    
+    @Column(name = "state")
+    private String state; 
+    
+    @Column(name = "city")
+    private String city;
+    
+    @Column(name = "country")
+    private String country;
+    
+    @Column(name = "zip")
+    private String zip;
+    
+    public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -42,7 +60,4 @@ public class Adress {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	@Column
-	private String street, state, city, country, zip;
-
 }
