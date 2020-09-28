@@ -22,7 +22,10 @@ import com.codechallenge2.models.*;
  * 
  * */
 @RestController
-@RequestMapping("user")
+@RequestMapping(
+		  value = "user", 
+		  produces = "application/json", 
+		  method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.POST})
 
 public class UserRest {
 	@Autowired
@@ -45,16 +48,16 @@ public class UserRest {
 		return userDao.findById(userId);
 	}
 	
-	/* Borra la entidad con el id del primer parametro y guarda la entidad nueva 
+	/* Borra la entidad con el id del primer parametro y guarda la entidad nueva */
 	@PutMapping("/updateUsersById/{userId}")
 	public void updateUsersById(@PathVariable Integer userId, @RequestBody User entity) {
 		userDao.deleteById(userId);
 		userDao.save(entity);
-	}*/
+	}
 	
 	@DeleteMapping("/deleteUsersById/{userId}")
-	public void deleteUsersById(@PathVariable Integer id) {
-		userDao.deleteById(id);
+	public void deleteUsersById(@PathVariable("userId") Integer userId) {
+		userDao.deleteById(userId);
 	}
 	
 	

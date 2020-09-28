@@ -1,8 +1,9 @@
 package com.codechallenge2.models;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 
 @Entity
@@ -10,13 +11,13 @@ public class User {
 	@Id
 	private Integer id;
 	
-	@Column
+	
 	private String name;
 	
-	@Column
+	
 	private String email;
 	
-	@Column
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime birthDate;
 	
 	@OneToOne
@@ -56,13 +57,14 @@ public class User {
 	public void setBirthDate(LocalDateTime birthDate) {
 		this.birthDate = birthDate;
 	}
-	/* Fecha de nacimiento a partir de String */
+	/* Fecha de nacimiento a partir de String 
 	public void setBirthDate(String dateString) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime = LocalDateTime.parse(dateString, formatter);
         this.birthDate = dateTime;
         
-	}
+	}*/
+	
 	
 	
 }
