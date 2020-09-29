@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity
@@ -23,8 +24,9 @@ public class User {
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime birthDate;
     
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "adress")
+    @JoinColumn(name = "adress", referencedColumnName = "id")
 	private Adress adress;
 	
 	
@@ -60,5 +62,14 @@ public class User {
 	}
 	public void setBirthDate(LocalDateTime birthDate) {
 		this.birthDate = birthDate;
+	}
+	public User() {
+	}
+	public User(Integer id, String name, String email, LocalDateTime birthDate, Adress adress) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.birthDate = birthDate;
+		this.adress = adress;
 	}
 }

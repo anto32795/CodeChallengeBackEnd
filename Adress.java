@@ -61,4 +61,14 @@ public class Adress {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+	public Adress() {
+	}
+	public Adress(Integer id, String street, String state, String city, String country, String zip) {
+		this.id = id;
+		this.street = street;
+		this.state = state;
+		this.city = city;
+		this.country = country;
+		this.zip = zip;
+	}
 }

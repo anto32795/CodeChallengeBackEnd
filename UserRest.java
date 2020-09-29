@@ -108,7 +108,9 @@ public class UserRest {
 		return userDao.findById(userId);
 	}
 	
-	/* Borra la entidad con el id del primer parametro y guarda la entidad nueva */
+	/* Borra la entidad con el id del primer parametro y guarda la entidad nueva 
+	 * Autoincremento activado !!
+	 * */
 	@PutMapping("/updateUsersById/{userId}")
 	public void updateUsersById(@PathVariable Integer userId, @RequestBody User entity) {
 		userDao.deleteById(userId);
