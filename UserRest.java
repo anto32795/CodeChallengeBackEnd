@@ -37,8 +37,68 @@ public class UserRest {
 	}
 	
 	//@RequestBody para convertir fichero a clase user"
+	//TODO: INSTANCIAR ADRESS AQUI
+	//Version prueba: adress inventada
 	@PostMapping("/createUsers")
 	public void createUsers(@RequestBody User entity) {
+		Adress dir = new Adress();
+		//dir.setCity(entity.getAdress().getCity());
+		/*dir.setCity("Madrid");
+		dir.setCountry("Spain");
+		dir.setId(1);
+		dir.setState("spaMAL");
+		dir.setStreet("falsa");
+		dir.setZip("zip2");*/
+		
+		String city, country,state, street, zip;
+		Integer id;
+		id = entity.getAdress().getId();
+		if(id == null)
+			id = 1;
+		
+		city = entity.getAdress().getCity();
+		if(city == null)
+			city = "FAKE";
+		
+		country = entity.getAdress().getCountry();
+		if(country == null)
+			country = "FAKE";
+		
+		state = entity.getAdress().getState();
+		if(state == null)
+			state = "FAKE";
+		
+		street = entity.getAdress().getStreet();
+		if(street == null)
+			street = "FAKE";
+		
+		zip = entity.getAdress().getZip();
+		if(zip == null)
+			zip = "FAKE";
+		
+		/*dir.setCity(entity.getAdress().getCity());
+		dir.setCountry(entity.getAdress().getCountry());
+		dir.setId(entity.getAdress().getId());
+		dir.setState(entity.getAdress().getState());
+		dir.setStreet(entity.getAdress().getStreet());
+		dir.setZip(entity.getAdress().getZip());*/
+		
+		dir.setCity(city);
+		dir.setCountry(country);
+		dir.setId(id);
+		dir.setState(state);
+		dir.setStreet(street);
+		dir.setZip(zip);
+		
+		/*Integer p = (Integer)((Map) entity).get("id");
+		dir.setId( (Integer)((Map) entity).get("id"));
+		dir.setCountry( (String)((Map) entity).get("country"));
+		dir.setCity( (String)((Map) entity).get("city"));
+		dir.setState( (String)((Map) entity).get("state"));
+		dir.setStreet( (String)((Map) entity).get("street"));
+		dir.setZip( (String)((Map) entity).get("zip"));*/
+		
+		entity.setAdress(dir);
 		userDao.save(entity);
 	}
 	
